@@ -5,25 +5,34 @@
   --muted: #777777;
   --accent: #1d4ed8;
   --border: #e0e0e0;
-  --max-width: 1000px; /* screen width */
+  --max-width: 1000px;
 }
+
 
 /* Reset default browser spacing and ensure consistent sizing */
+
 * {
   box-sizing: border-box;
-  margin: 0; /* outside distance */
-  padding: 0; /* inside distance */
+  margin: 0;
+  padding: 0;
 }
 
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
-  font-family: Geneva, Arial, Helvetica, sans-serif;;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
 
+
 p {
-  font-size: 1rem; 
+  font-size: 1rem;
 }
 
 
@@ -32,28 +41,33 @@ a {
   text-decoration: none;
 }
 
+
 a:hover {
   text-decoration: underline;
 }
+
 
 a:visited {
   color: var(--accent);
 }
 
+
 a:active {
-  color:var(--muted);
+  color: var(--muted);
 }
 
 
-/* top navi */
+/* Top navigation */
+
 header {
   border-bottom: 1px solid var(--border);
   background: #ffffffcc;
   backdrop-filter: blur(10px);
-  position: sticky; /* keep position*/
+  position: sticky;
   top: 0;
-  z-index: 10; 
+  z-index: 10;
 }
+
 
 .nav-top {
   max-width: var(--max-width);
@@ -62,20 +76,27 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
+
 
 .nav-name {
   font-weight: 700;
   letter-spacing: 0.03em;
   font-size: 0.95rem;
+  white-space: nowrap;
 }
+
 
 nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 1rem;
   font-size: 0.9rem;
 }
+
 
 nav a {
   color: var(--text);
@@ -86,16 +107,26 @@ nav a {
   border-bottom: 2px solid transparent;
 }
 
+
+nav a:visited {
+  color: var(--text);
+}
+
+
 nav a:hover {
   color: var(--muted);
+  text-decoration: none;
 }
+
 
 nav a.active {
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
 
-/* I learned this pattern:CSS Grid for a two-column layout (sidebar + main content) */
+
+/* Two-column layout: sidebar and main content */
+
 main {
   max-width: var(--max-width);
   margin: 1.5rem auto 3rem;
@@ -105,14 +136,11 @@ main {
   gap: 2rem;
 }
 
-@media (max-width: 768px) {
-  main {
-    grid-template-columns: 1fr;
-  }
-}
 
+/* Sidebar */
 
 .sidebar {
+  align-self: start;
   background: var(--bg-alt);
   border-radius: 0.75rem;
   padding: 1.25rem 1.5rem;
@@ -120,45 +148,64 @@ main {
   font-size: 0.9rem;
 }
 
+
 .sidebar h1 {
   font-size: 1.6rem;
   margin-bottom: 0.2rem;
 }
 
+
 .sidebar .chinesename {
   font-size: 0.9rem;
   color: var(--muted);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
+
+.research-identity {
+  padding: 0.9rem 0;
+  margin-bottom: 0.5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+
 .sidebar h2 {
-  margin-top: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.25rem;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: var(--muted);
 }
 
+
 .sidebar p {
   margin: 0.15rem 0;
 }
 
+
 .sidebar .tags {
-  margin-top: 0.75rem;
+  margin-top: 0.55rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
 }
 
+
 .tag {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.55rem;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  padding: 0.18rem 0.5rem;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: #fafafa;
-  white-space: nowrap;/*keeping each tag on a single line*/
 }
+
 
 .social-links {
   margin-top: 0.75rem;
@@ -168,25 +215,37 @@ main {
   font-size: 0.85rem;
 }
 
+
 .social-links a {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
 }
 
+
 .cv-link {
-  margin-top: 0.5rem;
+  margin-top: 1rem !important;
   font-size: 0.9rem;
 }
 
-/* main content */
+
+.cv-date {
+  color: var(--muted);
+  font-size: 0.75rem !important;
+}
+
+
+/* Main content */
+
 .content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* hide sections */
+
+/* Hide inactive sections */
+
 .content-section {
   display: none;
   background: var(--bg-alt);
@@ -195,7 +254,9 @@ main {
   padding: 1.5rem 1.75rem;
 }
 
-/* active section */
+
+/* Display active section */
+
 .content-section.active {
   display: block;
 }
@@ -205,16 +266,29 @@ main {
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
   color: var(--muted);
 }
 
-/* Main Body Style */
+
+/* About */
+
 .welcome {
   font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
 }
 
+
+.about-lead {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+}
+
+
+/* Lists */
 
 .section-list {
   list-style: none;
@@ -222,25 +296,200 @@ main {
   margin-top: 0.5rem;
 }
 
-    /* space between list*/
-.section-list li + li { 
-  margin-top: 0.9rem; 
+
+.section-list li + li {
+  margin-top: 1.2rem;
 }
+
 
 .item-title {
   font-weight: 600;
+  margin-bottom: 0.25rem;
 }
+
 
 .item-meta {
   font-size: 0.85rem;
   color: var(--muted);
 }
 
+
+.section-introduction {
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+
+/* Research agenda */
+
+.research-agenda {
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+
+.research-agenda > .item-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.65rem;
+}
+
+
+.research-agenda > p {
+  margin-top: 0.75rem;
+}
+
+
+.research-question {
+  margin-top: 1rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--accent);
+}
+
+
+.research-question strong {
+  font-size: 0.9rem;
+}
+
+
+.research-question p {
+  margin-top: 0.2rem;
+  color: var(--muted);
+}
+
+
+/* Flagship thesis project */
+
+.featured-project {
+  margin-top: 1.5rem !important;
+  padding: 1.25rem;
+  background: #f8faff;
+  border: 1px solid #cbd8f7;
+  border-radius: 0.6rem;
+}
+
+
+.featured-label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+
+.featured-project > .item-title {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+.project-name {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.35;
+}
+
+
+.project-detail {
+  margin-top: 1rem;
+}
+
+
+.project-detail strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+
+.project-detail p {
+  font-size: 0.94rem;
+}
+
+
+/* Methods */
+
+.methods-section {
+  margin-top: 1.7rem !important;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+
+.methods-section > .item-title {
+  font-size: 1.25rem;
+}
+
+
+.method-group {
+  margin-top: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+
+.method-group:last-child {
+  border-bottom: none;
+}
+
+
+.method-group strong {
+  color: var(--text);
+}
+
+
+.method-group p {
+  margin-top: 0.2rem;
+  font-size: 0.92rem;
+}
+
+
+.method-tools {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+
+/* Publications */
+
+.publication-entry {
+  margin-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+
+.publication-entry:last-child {
+  border-bottom: none;
+}
+
+
+.publication-note {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+
+/* Images */
+
 .single-photo {
-  width: 530px;
-  height: 410px;
+  display: block;
+  clear: both;
+  width: 100%;
+  height: auto;
+  margin: 24px 0 8px;
+  border: 1px solid var(--border);
   border-radius: 20px;
-  border: 1px solid #ddd;
 }
 
 
@@ -251,21 +500,184 @@ main {
 
 
 .multi-photos {
+  margin-top: 0.75rem;
   margin-bottom: 1rem;
   display: flex;
-  flex-wrap: wrap;/* automatically next line */
+  flex-wrap: wrap;
   gap: 0.75rem;
 }
 
+
 .multi-photos img {
   width: 280px;
+  max-width: 100%;
   height: 200px;
-  object-fit: cover; /* keep original size */
+  object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--border);
 }
 
 
+/* Responsive layout */
+
+@media (max-width: 768px) {
+
+  .nav-top {
+    align-items: flex-start;
+  }
+
+  nav ul {
+    gap: 0.55rem 0.8rem;
+  }
+
+  nav a {
+    font-size: 0.7rem;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .content-section {
+    padding: 1.25rem;
+  }
+
+  .multi-photos img {
+    width: calc(50% - 0.375rem);
+    height: auto;
+    aspect-ratio: 7 / 5;
+  }
+
+}
 
 
+@media (max-width: 520px) {
 
+  .nav-top {
+    flex-direction: column;
+  }
+
+  nav ul {
+    justify-content: flex-start;
+  }
+
+  .welcome {
+    font-size: 1.35rem;
+  }
+
+  .featured-project {
+    padding: 1rem;
+  }
+
+  .multi-photos img {
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+}
+
+/* Research subpage navigation */
+
+.research-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+
+.research-tab {
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--muted);
+  padding: 0.45rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.research-tab:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+
+.research-tab.active {
+  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+
+.research-tab:focus-visible {
+  outline: 3px solid rgba(29, 78, 216, 0.22);
+  outline-offset: 2px;
+}
+
+
+/* Hide inactive research subpages */
+
+.research-subpage {
+  display: none;
+}
+
+
+.research-subpage.active {
+  display: block;
+}
+
+
+/* Project group headings */
+
+.project-group-heading {
+  margin-top: 2rem !important;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+
+.project-group-heading > .item-title {
+  font-size: 1.1rem;
+}
+
+
+/* The Methods section is now its own subpage */
+
+.research-subpage .methods-section {
+  margin-top: 0 !important;
+  padding-top: 0;
+  border-top: none;
+}
+
+
+/* Responsive research navigation */
+
+@media (max-width: 520px) {
+
+  .research-subnav {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .research-tab {
+    width: 100%;
+    text-align: left;
+    border-radius: 0.45rem;
+  }
+
+}
