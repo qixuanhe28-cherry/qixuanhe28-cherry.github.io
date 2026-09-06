@@ -1,0 +1,271 @@
+:root {
+  --bg: #f7f7f7;
+  --bg-alt: #ffffff;
+  --text: #222222;
+  --muted: #777777;
+  --accent: #1d4ed8;
+  --border: #e0e0e0;
+  --max-width: 1000px; /* screen width */
+}
+
+/* Reset default browser spacing and ensure consistent sizing */
+* {
+  box-sizing: border-box;
+  margin: 0; /* outside distance */
+  padding: 0; /* inside distance */
+}
+
+body {
+  font-family: Geneva, Arial, Helvetica, sans-serif;;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+p {
+  font-size: 1rem; 
+}
+
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--accent);
+}
+
+a:active {
+  color:var(--muted);
+}
+
+
+/* top navi */
+header {
+  border-bottom: 1px solid var(--border);
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  position: sticky; /* keep position*/
+  top: 0;
+  z-index: 10; 
+}
+
+.nav-top {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: 0.95rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+nav a {
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  color: var(--muted);
+}
+
+nav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* I learned this pattern:CSS Grid for a two-column layout (sidebar + main content) */
+main {
+  max-width: var(--max-width);
+  margin: 1.5rem auto 3rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.sidebar {
+  background: var(--bg-alt);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.sidebar h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.sidebar .chinesename {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.sidebar h2 {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.sidebar p {
+  margin: 0.15rem 0;
+}
+
+.sidebar .tags {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fafafa;
+  white-space: nowrap;/*keeping each tag on a single line*/
+}
+
+.social-links {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cv-link {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* main content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* hide sections */
+.content-section {
+  display: none;
+  background: var(--bg-alt);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.75rem;
+}
+
+/* active section */
+.content-section.active {
+  display: block;
+}
+
+
+.content-section h1 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+  color: var(--muted);
+}
+
+/* Main Body Style */
+.welcome {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.section-list {
+  list-style: none;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+    /* space between list*/
+.section-list li + li { 
+  margin-top: 0.9rem; 
+}
+
+.item-title {
+  font-weight: 600;
+}
+
+.item-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.single-photo {
+  width: 530px;
+  height: 410px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+
+.float-right {
+  float: right;
+  margin: 0 0 0.75rem 1rem;
+}
+
+
+.multi-photos {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;/* automatically next line */
+  gap: 0.75rem;
+}
+
+.multi-photos img {
+  width: 280px;
+  height: 200px;
+  object-fit: cover; /* keep original size */
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+
+
+
+
